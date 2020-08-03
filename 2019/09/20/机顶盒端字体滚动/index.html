@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 机顶盒端字体滚动 · 杨越的</title><meta name="description" content="机顶盒端字体滚动 - John Doe"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="杨越的"><meta name="generator" content="Hexo 5.0.0"><link rel="alternate" href="/atom.xml" title="杨越的" type="application/atom+xml">
+</head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://weibo.com/p/1005055281873644/home?from=page_100505&amp;mod=TAB#place" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/yangyue6531267" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">机顶盒端字体滚动</h1><div class="post-info">Sep 20, 2019</div><div class="post-content"><h4 id="字体滚动"><a href="#字体滚动" class="headerlink" title="字体滚动"></a>字体滚动</h4><pre><code>this.marquee = function (status,id) &#123;
+    # status add 开始 传空清除结束
+    var scrollLeft = 0;
+    this.timer &amp;&amp; clearInterval(this.timer);
+    var div = getId(id);
+    if (!div) return
+    if (status == &#39;add&#39;) &#123;
+      if (div.innerHTML.length &lt; 8) return
+      scrollLeft = div.offsetWidth
+      div.style.cssText = &quot;text-indent: &quot; + scrollLeft + &quot;px;text-align: center;text-overflow: clip;&quot;
+      this.timer = setInterval(function () &#123;
+        if (scrollLeft &lt;= -div.offsetWidth + 20) &#123;
+          scrollLeft = div.offsetWidth;
+          div.style.cssText = &quot;text-indent: &quot; + scrollLeft + &quot;px;text-align: center;text-overflow: clip;&quot;
+        &#125; else &#123;
+          scrollLeft += -1;
+          div.style.cssText = &quot;text-indent: &quot; + scrollLeft + &quot;px;text-align: center;text-overflow: clip;&quot;
+        &#125;
+      &#125;, 30);
+    &#125; else &#123;
+      if (div.innerHTML.length &gt;= 8) &#123;
+        scrollLeft = 0;
+        div.style.cssText = &quot;text-indent: &quot; + scrollLeft + &quot;px;text-align: center;&quot;
+      &#125;
+    &#125;
+  &#125;;
+
+#   getId封装获取id的function 内容：return document.getElementById(arg);</code></pre>
+<p><img src="https://yangyue6531267.github.io/yangyue.github.com/v2-7b59f4651e00c9ae7f46367b933d8daf_hd.jpg" alt="Image text"></p>
+</div></article></div></main><footer><div class="paginator"><a href="/2019/10/02/%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%B1%BBvue%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/" class="prev">PREV</a><a href="/2018/08/14/vue%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8%E5%93%A6/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2020 <a href="http://yoursite.com">John Doe</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
